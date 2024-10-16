@@ -10,54 +10,51 @@ async function quantidadeUsuarios() {
 
   const data = [
     {
-      x: nomeDasRedes,
-      y: quantidadeUsuarios,
-      type: 'bar',
-      marker: {
-        color: getCSS('--primary-color')
-      }
-    }
-  ]
-
-
-const layout = {
-  plot_bgcolor: getCSS('--bg-color'),
-  paper_bgcolor: getCSS('--bg-color'),
-  title: {
-    text: 'Redes sociais com mais usuários no mundo',
-     x: 0,
-     font: {
-         color: getCSS('--primary-color'),
-         family: getCSS('--font'),
-         size: 30
-     }
-},
-xaxis: {
-    tickfont: tickConfig,
-    title: {
-        text: 'nome das redes sociais',
-        font: {
-            color: getCSS('--secondary-color')
+        x: nomeDasRedes, 
+        y: quantidadeDeUsuarios, 
+        type: 'bar',
+        marker: {
+            color: getCSS('--primary-color')
         }
     }
-},
-yaxis: {
-    tickfont: tickConfig,
+]
+
+const laytout = {
+    plot_bgcolor: getCSS('--bg-color'),
+    paper_bgcolor: getCSS('--bg-color'),
     title: {
-        text: 'bilhões de usuários ativos',
+        text: 'Redes sociais com mais usuários',
+        x: 0,
         font: {
-            color: getCSS('--secondary-color')
+            color: getCSS('--primary-color'),
+            size: 30,
+            font: getCSS('--font')
+        }
+    },
+    xaxis: {
+        tickfont: tickConfig,
+        title: {
+            text: 'Nome das redes',
+            font: {
+                color: getCSS('--secondary-color')
+            }
+        }
+    },
+    yaxis: {
+        tickfont: tickConfig,
+        title: {
+            text: 'Bilhões de usuários ativos',
+            font: {
+                color: getCSS('--secondary-color')
+            }
         }
     }
 }
+
+const grafico = document.createElement('div')
+grafico.className = 'grafico'
+document.getElementById('graficos-container').appendChild(grafico)
+Plotly.newPlot(grafico, data, laytout)
 }
-  const grafico = document.createElement('div')
-  grafico.className = 'grafico'
-  document.getElementById('graficos-container').appendChild(grafico)
-  Plotly.newPlot(grafico, data, layout)
 
-}
-
-
-
-quantidadeUsuarios()
+quantidadeUsuariosPorRede()
